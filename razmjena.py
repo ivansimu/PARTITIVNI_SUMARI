@@ -2,7 +2,7 @@ import socket
 import json
 
 tim = "PARTITIVNISUMARI"
-port = 25000
+port = 25001
 
 class Burza:
     def __init__(self, test):
