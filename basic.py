@@ -67,11 +67,11 @@ def skalpiranje(burza):
 
 
     if offerVZ < bidVE - 10:
-        burza.kupi('BUY', 'VALBZ', offerVZ, sizeVZ = 10)
+        burza.kupi('BUY', 'VALBZ', offerVZ, sizeVZ)
         burza.pretvori('BUY', 'VALE', sizeVZ)
 
     if offerVE < bidVZ - 10:
-        burza.kupi('BUY', 'VALE', offerVE, sizeVE=10)
+        burza.kupi('BUY', 'VALE', offerVE, sizeVE)
         burza.pretvori('BUY', 'VALBZ', sizeVE)
 
 
@@ -85,13 +85,11 @@ def skalpiranje(burza):
         trigger_high = 3
         trigger_low = 1
 
-            if (diff_highVALE > trigger_high) and (diff_lowVALE < trigger_low):
-                burza.kupi('SELL', 'VALE', bidVE, sizeVE = 10)
+        if (diff_highVALE > trigger_high) and (diff_lowVALE < trigger_low):
+            burza.kupi('SELL', 'VALE', bidVE, sizeVE)
 
-            if (diff_highVALBZ > trigger_high) and (diff_lowVALBZ < trigger_low):
-                burza.kupi('SELL', 'VALBZ', bidVZ, sizeVZ = 10)
-
-    return narudzbe
+        if (diff_highVALBZ > trigger_high) and (diff_lowVALBZ < trigger_low):
+            burza.kupi('SELL', 'VALBZ', bidVZ, sizeVZ)
 
 # def skalpiranjeXLF(burza):
 #
