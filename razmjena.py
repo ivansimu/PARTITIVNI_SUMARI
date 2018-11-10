@@ -4,7 +4,7 @@ import json
 tim = "PARTITIVNISUMARI"
 port = 25000
 
-class Razmjena:
+class Burza:
     def __init__(self, test):
         if test:
             host_name = "test-exch-partitivnisumari"
