@@ -38,23 +38,23 @@ class Razmjena:
         self.stream.write("\n")
 
 
-    #
-    # def kupi(self, buysell, symbol, price, size):
-    #     trade = {'type': 'add', 'order_id': self.order_id, 'symbol': symbol,
-    #              'dir': buysell, 'price': price, 'size': size}
-    #     self.order_id += 1
-    #     print(trade)
-    #     self.zapisi(trade)
-    #
-    # def trade_batch(self, trades):
-    #     # TODO provjeri konflikte
-    #     for buysell, symbol, price, size in trades:
-    #         if buysell and size != 0:
-    #             self.zapisi(buysell, symbol, price, size)
-    #
-    # def pretvori(self, buysell, symbol, size):
-    #     trade = {'type': 'convert', 'order_id': self.order_id,
-    #              'symbol': symbol, 'dir': buysell, 'size': size}
-    #     self.order_id += 1
-    #     print(trade)
-    #     self.zapisi(trade)
+
+    def kupi(self, buysell, symbol, price, size):
+        trade = {'type': 'add', 'order_id': self.order_id, 'symbol': symbol,
+                 'dir': buysell, 'price': price, 'size': size}
+        self.order_id += 1
+        print(trade)
+        self.zapisi(trade)
+
+    def trade_batch(self, trades):
+        # TODO provjeri konflikte
+        for buysell, symbol, price, size in trades:
+            if buysell and size != 0:
+                self.zapisi(buysell, symbol, price, size)
+
+    def pretvori(self, buysell, symbol, size):
+        trade = {'type': 'convert', 'order_id': self.order_id,
+                 'symbol': symbol, 'dir': buysell, 'size': size}
+        self.order_id += 1
+        print(trade)
+        self.zapisi(trade)
