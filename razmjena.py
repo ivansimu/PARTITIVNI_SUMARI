@@ -15,7 +15,7 @@ class Burza:
         self.pendorders = {}
         if test:
             host_name = "test-exch-partitivnisumari"
-            port = 25001
+            port = 25000
         else:
             host_name = "production"
             port = 25000
@@ -39,7 +39,7 @@ class Burza:
             data = json.loads(data)
             if store_last:
                 self.last_data = data
-                teste.logger(self.log,data)
+                #teste.logger(self.log,data)
                 # if data['type'] == 'fill':
                 #     if data['dir'] == 'BUY':
                 #         self.inv[data['symbol']] -= data['size']

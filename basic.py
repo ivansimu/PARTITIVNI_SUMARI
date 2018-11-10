@@ -22,7 +22,7 @@ def run(burza):
 def run2(burza):
     while True:
         burza.citaj()
-        swicc(burza)
+        run(burza)
 
 def run3(burza):
     dffs = teste.alg(burza.log,3)
