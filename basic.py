@@ -40,7 +40,7 @@ def run3(burza):
 def swicc(burza):
     data = burza.last_data
     if data['type'] == 'book' and data['symbol'] == 'BOND':
-        run2(burza)
+        run(burza)
     elif data['type'] == 'book' and data['symbol'] != 'BOND':
         skalpiranje(burza)
 
