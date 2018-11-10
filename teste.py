@@ -29,7 +29,7 @@ def logN(burza,n):
         if ord['type'] == 'book':
             buy = ord['buy']
             sell = ord['sell']
-            print(buy)
+            # print(buy)
             tb = 0
             cb = 0
             for p,n in buy:
@@ -43,12 +43,14 @@ def logN(burza,n):
 
             if tb != 0 and ts != 0:
                 d[ord['symbol']] = (max(map(lambda x: x[0],buy)),min(map(lambda x: x[0],buy)),
-                                    max(map(lambda x: x[0],sell)),min(map(lambda x: x[0],sell)),cb//tb,cs//ts) # cb//tb - prosjecna cijena kupnje, cs//ts - prosjecna cijena prodaje
+                                    max(map(lambda x: x[0],sell)),min(map(lambda x: x[0],sell)),cb//tb,cs//ts)
+                # cb//tb - prosjecna cijena kupnje, cs//ts - prosjecna cijena prodaje
     return d
 
 
 listadionica = ["GS","MS", "WFC", "VALBZ","BOND","VALE","XLF"]
 
+# mx = broj
 def alg(d,mx=11):
     res = {}
     diffs = []
