@@ -25,7 +25,7 @@ listadionica = ["GS","MS", "WFC", "VALBZ","BOND","VALE","XLF"]
 def alg(d,mx=11):
     res = {}
     diffs = []
-    #print(d)
+    print(d)
     for sym in listadionica:
         prices = d[sym]
         j: int
