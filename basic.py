@@ -27,14 +27,14 @@ def run3(burza):
     data = burza.last_data
     sym = data['symbol']
     if data['type'] == 'book':
-        if sym in dffs:
+        if (sym,0) in dffs:
             bidovi = data['buy']
             for price, size in bidovi:
-                if dffs[sym] < 0:
+                if dffs[(sym,0)] < 0:
                     burza.kupi('SELL', sym, price, size)
             offeri = data['sell']
             for price, size in offeri:
-                if dffs[sym] > 0:
+                if dffs[(sym,1)] > 0:
                     burza.kupi('BUY', sym, price, size)
 
 def swicc(burza):

@@ -4,19 +4,33 @@ def logger(d,ord):
         print(d)
         print(ord['symbol'])
         print(d[ord['symbol']])
-        d[ord['symbol']].append(ord['price'])
+        buy = ord['buy']
+        sell = ord['sell']
+
+        tb = 0
+        cb = 0
+        for p,n in buy:
+            cb += p * n
+            tb += n
+
+        ts,cs = 0,0
+        for p,n in sell:
+            cs += p * n
+            ts += n
+        d[ord['symbol']].append((cb//tb,cs//ts))
 
 def alg(d,mx=11):
     res = {}
     diffs = []
     for sym,prices in d:
-        prices = reversed(prices)
-        n = 1
-        i = 0
-        while i + n < len(prices) and n <= mx:
-            diffs.append((prices[i+n] - prices[i])//2)
-            i += n
-            n += 1
-        res[sym] = sum(diffs)//len(diffs)
-        diffs.clear()
+        for j in [0,1]
+            prices = reversed(prices)
+            n = 1
+            i = 0
+            while i + n < len(prices) and n <= mx:
+                diffs.append((prices[i+n][j] - prices[i][j])//2)
+                i += n
+                n += 1
+            res[(sym,j)] = sum(diffs)//len(diffs)
+            diffs.clear()
     return res
