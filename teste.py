@@ -18,23 +18,48 @@ def logger(d,ord):
             cs += p * n
             ts += n
         if tb != 0 and ts != 0:
-            d[ord['symbol']].append((cb//tb,cs//ts))
+            d[ord['symbol']].append((cb//tb,cs//ts)) # cb//tb - prosjecna cijena kupnje, cs//ts - prosjecna cijena prodaje
+
+def logN(burza,n):
+    d = {}
+    ords = []
+    for ord in ords:
+        for i in range(n):
+            ords.append(burza.citaj())
+        if ord['type'] == 'book':
+            buy = ord['buy']
+            sell = ord['sell']
+            print(buy)
+            tb = 0
+            cb = 0
+            for p,n in buy:
+                cb += p * n
+                tb += n
+
+            ts,cs = 0,0
+            for p,n in sell:
+                cs += p * n
+                ts += n
+
+            if tb != 0 and ts != 0:
+                d[ord['symbol']] = (max(buy),min(buy),max(sell),min(sell),cb//tb,cs//ts) # cb//tb - prosjecna cijena kupnje, cs//ts - prosjecna cijena prodaje
+
 
 listadionica = ["GS","MS", "WFC", "VALBZ","BOND","VALE","XLF"]
 
 def alg(d,mx=11):
     res = {}
     diffs = []
-    print(d)
+    #print(d)
     for sym in listadionica:
         prices = d[sym]
         j: int
         for j in [0,1]:
-            prices = list(reversed(prices))
+            prices = list(reversed(prices[len(prices)- mx * (mx + 1) // 2:])) #uzmi zadnjih mx *(mx-1) i okreni listu
             n = 1
             i = 0
             while i + n < len(prices) and n <= mx:
-                diffs.append((prices[i+n][j] - prices[i][j])//2)
+                diffs.append(prices[i+n][j] - prices[i][j])
                 i += n
                 n += 1
             if len(diffs) > 0:

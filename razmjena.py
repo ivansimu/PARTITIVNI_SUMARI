@@ -2,20 +2,22 @@ import socket
 import json
 import teste
 
+from typing import Dict
+
 tim = "PARTITIVNISUMARI"
 listadionica = ["GS","MS", "WFC", "VALBZ","BOND","VALE","XLF"]
 
 class Burza:
     def __init__(self, test):
-        self.log = {}
-        self.inv = {}
+        self.log = {} # symbol -> (prosjecna kupujuca cijena,prosjecna prodajna cijena)
+        self.inv = {} # symbol -> broj dionica u invetoriju
         for i in listadionica:
             self.log[i] = []
             self.inv[i] = 0
         self.pendorders = {}
         if test:
             host_name = "test-exch-partitivnisumari"
-            port = 25000
+            port = 25001
         else:
             host_name = "production"
             port = 25000
@@ -39,7 +41,7 @@ class Burza:
             data = json.loads(data)
             if store_last:
                 self.last_data = data
-                #teste.logger(self.log,data)
+                teste.logger(self.log,data)
                 # if data['type'] == 'fill':
                 #     if data['dir'] == 'BUY':
                 #         self.inv[data['symbol']] -= data['size']
