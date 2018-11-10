@@ -10,7 +10,7 @@ class Burza:
             port = 25001
         else:
             host_name = "production"
-            port = 20000
+            port = 25000
 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((host_name, port))
