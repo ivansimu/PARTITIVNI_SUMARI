@@ -54,7 +54,7 @@ def skalpiranje(burza):
 
     stanje = {}
 
-    while 'VALBZ' not in stanje and 'VALE' not in stanje:
+    while 'VALBZ' not in stanje or 'VALE' not in stanje:
         stanje = teste.logN(burza, 15)
 
     offerVZ = stanje['VALBZ'][3]
