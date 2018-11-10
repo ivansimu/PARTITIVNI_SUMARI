@@ -43,7 +43,7 @@ class Burza:
                 if data['type'] == 'fill':
                     if data['dir'] == 'BUY':
                         self.inv[data['symbol']] -= data['size']
-                    elif:
+                    else:
                         self.inv[data['symbol']] += data['size']
 
             return data
@@ -58,8 +58,11 @@ class Burza:
                  'dir': buysell, 'price': price, 'size': size}
         self.order_id += 1
         print(trade)
-        if shouldIBuy(self.inv):
+        if buysell == "SELL" and teste.shouldISell(self.inv,symbol):
             self.zapisi(trade)
+        elif buysell == BUY:
+            self.zapisi(trade)
+
 
     def trade_batch(self, trades):
         # TODO provjeri konflikte
