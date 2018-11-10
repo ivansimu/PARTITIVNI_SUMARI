@@ -26,8 +26,6 @@ def logN(burza,n):
     for i in range(n):
         ords.append(burza.citaj())
     for ord in ords:
-        for i in range(n):
-            ords.append(burza.citaj())
         if ord['type'] == 'book':
             buy = ord['buy']
             sell = ord['sell']
@@ -44,8 +42,8 @@ def logN(burza,n):
                 ts += n
 
             if tb != 0 and ts != 0:
-                d[ord['symbol']] = (max(map(lambda x: x[0],1),buy),min(map(lambda x: x[0],1),buy),
-                                    max(map(lambda x: x[0],1),sell),min(map(lambda x: x[0],1),sell),cb//tb,cs//ts) # cb//tb - prosjecna cijena kupnje, cs//ts - prosjecna cijena prodaje
+                d[ord['symbol']] = (max(map(lambda x: x[0],buy)),min(map(lambda x: x[0],buy)),
+                                    max(map(lambda x: x[0],sell)),min(map(lambda x: x[0],sell)),cb//tb,cs//ts) # cb//tb - prosjecna cijena kupnje, cs//ts - prosjecna cijena prodaje
     return d
 
 
