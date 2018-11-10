@@ -42,11 +42,11 @@ class Burza:
             if store_last:
                 self.last_data = data
                 teste.logger(self.log,data)
-                # if data['type'] == 'fill':
-                #     if data['dir'] == 'BUY':
-                #         self.inv[data['symbol']] -= data['size']
-                #     else:
-                #         self.inv[data['symbol']] += data['size']
+                if data['type'] == 'fill':
+                    if data['dir'] == 'BUY':
+                        self.inv[data['symbol']] -= data['size']
+                    else:
+                        self.inv[data['symbol']] += data['size']
 
             return data
 

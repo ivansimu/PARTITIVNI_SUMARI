@@ -42,34 +42,36 @@ def swicc(burza):
     if data['type'] == 'book' and data['symbol'] == 'BOND':
         run2(burza)
     elif data['type'] == 'book' and data['symbol'] != 'BOND':
-        run3(burza)
+        skalpiranje(burza)
 
 
-# def skalpiranje(burza):
-#
-                # narudzbe = []
-                #
-                # data = burza.last_data
-                # if data['type'] == 'book' and data['symbol'] == 'VALBZ':
-                #     bidoviValbz = data['buy']
-                #     offeriValbz = data['sell']
-                #
-                # if data['type'] == 'book' and data['symbol'] == 'VALE':
-                #     bidoviVale = data['buy']
-                #     offeriVale = data['sell']
-#
-#     for bidVZ, sizeVZ in bidoviValbz:
-#         for offerVE, sizeVE in offeriVale:
-#             if offerVZ < bidVE - 10:
-#                 burza.kupi('BUY', 'VALBZ', offerVZ, sizeVZ)
-#                 burza.pretvori('BUY', 'VALE', sizeVZ)
-#                 burza.kupi('SELL', 'VALE', bidVE, sizeVZ)
-#
-#     for bidVE, sizeVE in bidoviVale:
-#         for offerVZ, sizeVZ in offeriValbz:
-#             if offerVE < bidVZ - 10:
-#                 burza.kupi('BUY', 'VALE', offerVE, sizeVE)
-#                 burza.pretvori('BUY', 'VALBZ', sizeVE)
-#                 burza.kupi('SELL', 'VALBZ', bidVZ, sizeVE)
-#
-#     return narudzbe
+def skalpiranje(burza):
+
+    narudzbe = []
+
+    sizeVZ = 1
+    sizeVE = 1
+
+    stanje = {}
+
+    while 'VALBZ' not in stanje or 'VALE' not in stanje:
+        stanje = teste.logN(burza, 15)
+
+    offerVZ = stanje['VALBZ'][3]
+    bidVZ = stanje['VALBZ'][0]
+
+    offerVE = stanje['VALE'][3]
+    bidVE = stanje['VALE'][0]
+
+    if offerVZ < bidVE - 10:
+        burza.kupi('BUY', 'VALBZ', offerVZ, sizeVZ)
+        burza.pretvori('BUY', 'VALE', sizeVZ)
+        burza.kupi('SELL', 'VALE', bidVE, sizeVZ)
+
+
+    if offerVE < bidVZ - 10:
+        burza.kupi('BUY', 'VALE', offerVE, sizeVE)
+        burza.pretvori('BUY', 'VALBZ', sizeVE)
+        burza.kupi('SELL', 'VALBZ', bidVZ, sizeVE)
+
+    return narudzbe
