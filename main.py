@@ -11,7 +11,7 @@ import basic
 
 def prod():
     r = Burza(False)
-    basic.run2()
+    basic.run2(r)
 
 
 def test():
