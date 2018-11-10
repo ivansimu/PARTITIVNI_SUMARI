@@ -1,5 +1,6 @@
 import argparse
 from razmjena import Burza
+import basic
 
 if __name__ == 'main':
     p = argparse.ArgumentParser()
