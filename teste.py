@@ -29,7 +29,6 @@ def logN(burza,n):
         if ord['type'] == 'book':
             buy = ord['buy']
             sell = ord['sell']
-            print(buy)
             tb = 0
             cb = 0
             for p,n in buy:
