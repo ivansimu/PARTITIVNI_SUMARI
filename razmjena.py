@@ -2,7 +2,7 @@ import socket
 import json
 
 tim = "PARTITIVNISUMARI"
-port = 8080
+port = 25000
 
 class Razmjena:
     def __init__(self, test):
