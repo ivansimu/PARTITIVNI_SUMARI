@@ -20,3 +20,9 @@ def run2(burza):
         data = burza.citaj()
         run(burza)
         print(data)
+
+def swicc(burza):
+    if data['type'] == 'book' and data['symbol'] == 'BOND':
+        run2(burza)
+    else if data['type'] == 'book' and data['symbol'] == 'GS' or 'MS' or 'WFC' or 'VALBZ':
+        run3(burza)
