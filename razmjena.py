@@ -2,13 +2,12 @@ import socket
 import json
 
 tim = "PARTITIVNISUMARI"
-port = 20000
 
 class Burza:
     def __init__(self, test):
         if test:
             host_name = "test-exch-partitivnisumari"
-            port = 25000
+            port = 25001
         else:
             host_name = "production"
             port = 20000
