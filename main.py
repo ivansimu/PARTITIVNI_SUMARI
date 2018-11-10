@@ -9,8 +9,13 @@ if __name__ == 'main':
     print(args)
     raz = Burza(True)
 
+def prod():
+    r = Burza(False)
+    basic.run2()
+
+
 def test():
-    r = Burza(test)
+    r = Burza(True)
     basic.run2(r)
 
 print("Hello world")
