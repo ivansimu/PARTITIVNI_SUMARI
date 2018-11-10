@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/PARTITIVNI_SUMARI.iml" filepath="$PROJECT_DIR$/.idea/PARTITIVNI_SUMARI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/pss.iml" filepath="$PROJECT_DIR$/.idea/pss.iml" />
     </modules>
   </component>
 </project>
