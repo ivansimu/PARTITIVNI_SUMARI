@@ -43,3 +43,33 @@ def swicc(burza):
         run2(burza)
     elif data['type'] == 'book': #and data['symbol'] == 'GS' or 'MS' or 'WFC' or 'VALBZ':
         run3(burza)
+
+
+# def skalpiranje(burza):
+#
+#     narudzbe = []
+#
+#     data = burza.last_data
+#     if data['type'] == 'book' and data['symbol'] == 'VALBZ':
+#         bidoviValbz = data['buy']
+#         offeriValbz = data['sell']
+#
+#     if data['type'] == 'book' and data['symbol'] == 'VALE':
+#         bidoviVale = data['buy']
+#         offeriVale = data['sell']
+#
+#     for bidVZ, sizeVZ in bidoviValbz:
+#         for offerVE, sizeVE in offeriVale:
+#             if bidVZ < offerVE - 10:
+#                 burza.kupi('BUY', 'VALBZ', bidVZ, sizeVZ)
+#                 burza.pretvori('BUY', 'VALE', sizeVZ)
+#                 burza.kupi('SELL', 'VALE', sizeVZ)
+#
+#     for bidVE, sizeVE in bidoviVale:
+#         for offerVZ, sizeVZ in offeriValbz:
+#             if bidVE < offerVZ - 10:
+#                 burza.kupi('BUY', 'VALE', bidVE, sizeVE)
+#                 burza.pretvori('BUY', 'VALBZ', sizeVE)
+#                 burza.kupi('SELL', 'VALBZ', sizeVE)
+#
+#     return narudzbe

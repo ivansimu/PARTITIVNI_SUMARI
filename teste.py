@@ -35,3 +35,13 @@ def alg(d,mx=11):
             res[(sym,j)] = sum(diffs)//len(diffs)
             diffs.clear()
     return res
+
+def shouldIBuy(inv, symbol):
+    if symbol in ['GS', 'MS', 'WFC', 'XLF'] and inv[symbol] >= 0 and inv[symbol] <= 100:
+        return True
+    elif symbol in ['VALBZ', 'VALE'] and inv[symbol] >= 0 and inv[symbol] <= 10:
+        return True
+    elif symbol == 'BOND':
+        return True
+    else:
+        return False
