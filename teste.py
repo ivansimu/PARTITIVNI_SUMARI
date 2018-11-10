@@ -1,9 +1,9 @@
 def logger(d,ord):
     if ord['type'] == 'book':
-        print(ord)
-        print(d)
-        print(ord['symbol'])
-        print(d[ord['symbol']])
+        # print(ord)
+        # print(d)
+        # print(ord['symbol'])
+        # print(d[ord['symbol']])
         buy = ord['buy']
         sell = ord['sell']
 
@@ -23,8 +23,9 @@ def alg(d,mx=11):
     res = {}
     diffs = []
     for sym,prices in d:
-        for j in [0,1]
-            prices = reversed(prices)
+        j: int
+        for j in [0,1]:
+            prices = list(reversed(prices))
             n = 1
             i = 0
             while i + n < len(prices) and n <= mx:
