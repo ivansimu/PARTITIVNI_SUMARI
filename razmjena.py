@@ -3,7 +3,7 @@ import json
 import teste
 
 tim = "PARTITIVNISUMARI"
-listadionica = ["GS","MS", "WFC", "VALBZ"]
+listadionica = ["GS","MS", "WFC", "VALBZ","BOND","VALE","XLF"]
 
 class Burza:
     def __init__(self, test):
