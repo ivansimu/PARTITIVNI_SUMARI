@@ -37,3 +37,9 @@ def run3(burza):
             for price, size in offeri:
                 if dffs[sym] > 0:
                     burza.kupi('BUY', sym, price, size)
+
+def swicc(burza):
+    if data['type'] == 'book' and data['symbol'] == 'BOND':
+        run2(burza)
+    else if data['type'] == 'book' and data['symbol'] == 'GS' or 'MS' or 'WFC' or 'VALBZ':
+        run3(burza)
