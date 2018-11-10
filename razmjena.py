@@ -30,13 +30,13 @@ class Burza:
 
     def citaj(self, store_last=True):
         data = self.stream.readline()
-        teste.logger(self.log, data)
         if(data == ""):
             return None
         else:
             data = json.loads(data)
             if store_last:
                 self.last_data = data
+                teste.logger(self.log,data)
             return data
 
 
