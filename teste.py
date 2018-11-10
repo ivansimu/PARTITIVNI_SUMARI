@@ -80,7 +80,7 @@ def alg(d,mx=11):
 #         return False
 
 def shouldISell(inv, symbol):
-    if symbol in ['GS', 'MS', 'WFC', 'XLF', 'VALBZ', 'VALE'] and inv[symbol] >= 0:
+    if symbol in ['GS', 'MS', 'WFC', 'XLF', 'VALBZ', 'VALE'] and inv[symbol] > 0:
         return True
     else:
         return False
