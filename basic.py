@@ -50,29 +50,29 @@ def swicc(burza):
 
 # def skalpiranje(burza):
 #
-#     narudzbe = []
-#
-#     data = burza.last_data
-#     if data['type'] == 'book' and data['symbol'] == 'VALBZ':
-#         bidoviValbz = data['buy']
-#         offeriValbz = data['sell']
-#
-#     if data['type'] == 'book' and data['symbol'] == 'VALE':
-#         bidoviVale = data['buy']
-#         offeriVale = data['sell']
+                narudzbe = []
+
+                data = burza.last_data
+                if data['type'] == 'book' and data['symbol'] == 'VALBZ':
+                    bidoviValbz = data['buy']
+                    offeriValbz = data['sell']
+
+                if data['type'] == 'book' and data['symbol'] == 'VALE':
+                    bidoviVale = data['buy']
+                    offeriVale = data['sell']
 #
 #     for bidVZ, sizeVZ in bidoviValbz:
 #         for offerVE, sizeVE in offeriVale:
-#             if bidVZ < offerVE - 10:
-#                 burza.kupi('BUY', 'VALBZ', bidVZ, sizeVZ)
+#             if offerVZ < bidVE - 10:
+#                 burza.kupi('BUY', 'VALBZ', offerVZ, sizeVZ)
 #                 burza.pretvori('BUY', 'VALE', sizeVZ)
-#                 burza.kupi('SELL', 'VALE', sizeVZ)
+#                 burza.kupi('SELL', 'VALE', bidVE, sizeVZ)
 #
 #     for bidVE, sizeVE in bidoviVale:
 #         for offerVZ, sizeVZ in offeriValbz:
-#             if bidVE < offerVZ - 10:
-#                 burza.kupi('BUY', 'VALE', bidVE, sizeVE)
+#             if offerVE < bidVZ - 10:
+#                 burza.kupi('BUY', 'VALE', offerVE, sizeVE)
 #                 burza.pretvori('BUY', 'VALBZ', sizeVE)
-#                 burza.kupi('SELL', 'VALBZ', sizeVE)
+#                 burza.kupi('SELL', 'VALBZ', bidVZ, sizeVE)
 #
 #     return narudzbe
