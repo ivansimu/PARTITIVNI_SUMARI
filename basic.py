@@ -1,3 +1,5 @@
+import teste
+
 def run(burza):
 
     narudzbe = []
@@ -20,3 +22,18 @@ def run2(burza):
         data = burza.citaj()
         run(burza)
         print(data)
+
+def run3(burza):
+    dffs = teste.alg(burza.log)
+    data = burza.last_data
+    sym = data['symbol']
+    if data['type'] == 'book':
+        if sym in dffs:
+            bidovi = data['buy']
+            for price, size in bidovi:
+                if dffs[sym] < 0:
+                    burza.kupi('SELL', sym, price, size)
+            offeri = data['sell']
+            for price, size in offeri:
+                if dffs[sym] > 0:
+                    burza.kupi('BUY', sym, price, size)

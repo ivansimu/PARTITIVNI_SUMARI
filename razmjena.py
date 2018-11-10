@@ -1,10 +1,13 @@
 import socket
 import json
+import teste
 
 tim = "PARTITIVNISUMARI"
 
+
 class Burza:
     def __init__(self, test):
+        log = {}
         if test:
             host_name = "test-exch-partitivnisumari"
             port = 25001
@@ -25,6 +28,7 @@ class Burza:
 
     def citaj(self, store_last=True):
         data = self.stream.readline()
+        teste.logger(self.log, data)
         if(data == ""):
             return None
         else:
