@@ -1,10 +1,9 @@
 import teste
+from typing import Dict,List
 
 listadionica = ["GS","MS", "WFC", "VALBZ","BOND","VALE","XLF"]
 
 def run(burza):
-
-    narudzbe = []
     data = burza.last_data
 
     if data['type'] == 'book' and data['symbol'] == 'BOND':
@@ -16,8 +15,6 @@ def run(burza):
         for price, size in offeri:
             if price < 1000:
                 burza.kupi('BUY', 'BOND', price, size)
-    #print(narudzbe)
-    return narudzbe
 
 def run2(burza):
     while True:
@@ -25,6 +22,7 @@ def run2(burza):
         swicc(burza)
 
 def run3(burza):
+    # dffs = (symbol,int) -> int
     dffs = teste.alg(burza.log)
     data = burza.last_data
     sym = data['symbol']
@@ -32,11 +30,11 @@ def run3(burza):
         if (sym,0) in dffs:
             bidovi = data['buy']
             for price, size in bidovi:
-                if dffs[(sym,0)] < 0:
+                if dffs[(sym,0)] > 0:
                     burza.kupi('SELL', sym, price, size)
             offeri = data['sell']
             for price, size in offeri:
-                if dffs[(sym,1)] > 0:
+                if dffs[(sym,1)] < 0:
                     burza.kupi('BUY', sym, price, size)
 
 def swicc(burza):

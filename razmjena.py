@@ -2,13 +2,15 @@ import socket
 import json
 import teste
 
+from typing import Dict
+
 tim = "PARTITIVNISUMARI"
 listadionica = ["GS","MS", "WFC", "VALBZ","BOND","VALE","XLF"]
 
 class Burza:
     def __init__(self, test):
-        self.log = {}
-        self.inv = {}
+        self.log = {} # symbol -> (prosjecna kupujuca cijena,prosjecna prodajna cijena)
+        self.inv = {} # symbol -> broj dionica u invetoriju
         for i in listadionica:
             self.log[i] = []
             self.inv[i] = 0
