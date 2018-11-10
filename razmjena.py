@@ -41,7 +41,7 @@ class Burza:
         trade = {'type': 'add', 'order_id': self.order_id, 'symbol': symbol,
                  'dir': buysell, 'price': price, 'size': size}
         self.order_id += 1
-        #print(trade)
+        print(trade)
         self.zapisi(trade)
 
     def trade_batch(self, trades):

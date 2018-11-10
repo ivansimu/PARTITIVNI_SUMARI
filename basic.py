@@ -7,13 +7,12 @@ def run(burza):
         bidovi = data['buy']
         for price, size in bidovi:
             if price > 1000:
-                narudzbe.append(('SELL', 'BOND', price, size))
+                burza.kupi('SELL', 'BOND', price, size)
         offeri = data['sell']
         for price, size in offeri:
             if price < 1000:
-                narudzbe.append(('BUY', 'BOND', price, size))
-    print(narudzbe)
-    map(lambda z,x,c,v: burza.kupi(z,x,c,v),narudzbe)
+                burza.kupi('BUY', 'BOND', price, size)
+    #print(narudzbe)
     return narudzbe
 
 def run2(burza):
