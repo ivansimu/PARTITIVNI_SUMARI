@@ -1,5 +1,7 @@
 import teste
 
+listadionica = ["GS","MS", "WFC", "VALBZ","BOND","VALE","XLF"]
+
 def run(burza):
 
     narudzbe = []
