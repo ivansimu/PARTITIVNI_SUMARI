@@ -29,7 +29,6 @@ def logN(burza,n):
         if ord['type'] == 'book':
             buy = ord['buy']
             sell = ord['sell']
-            print(buy)
             tb = 0
             cb = 0
             for p,n in buy:
@@ -67,6 +66,21 @@ def alg(d,mx=11):
             if len(diffs) > 0:
                 res[(sym,j)] = sum(diffs)//len(diffs)
             diffs.clear()
+    return res
+
+def algIvan(d,mx=11):
+    res = {}
+    diffs = []
+    #print(d)
+    for sym in listadionica:
+        prices = d[sym]
+        j: int
+        for j in [0,1]:
+            prices = list(reversed(prices[len(prices)- mx:])) #uzmi zadnjih mx *(mx-1) i okreni listu
+            diffs.append(prices[0][j] - prices[1][j])
+            diffs.append(prices[0][j] - prices[mx-1][j])
+            res[(sym,j)] = diffs
+            diffs = []
     return res
 
 # def shouldIBuy(inv, symbol):

@@ -17,7 +17,7 @@ class Burza:
         self.pendorders = {}
         if test:
             host_name = "test-exch-partitivnisumari"
-            port = 25001
+            port = 25000
         else:
             host_name = "production"
             port = 25000
