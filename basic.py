@@ -46,14 +46,10 @@ def swicc(burza):
 
 
 def skalpiranje(burza):
-
-    narudzbe = []
-
     sizeVZ = 10
     sizeVE = 10
 
     stanje = {}
-
 
     while 'VALBZ' not in stanje or 'VALE' not in stanje:
         stanje = teste.logN(burza, 15)
@@ -64,8 +60,6 @@ def skalpiranje(burza):
     offerVE = stanje['VALE'][3]
     bidVE = stanje['VALE'][0]
 
-
-
     if offerVZ < bidVE - 10:
         burza.kupi('BUY', 'VALBZ', offerVZ, sizeVZ)
         burza.pretvori('BUY', 'VALE', sizeVZ)
@@ -73,7 +67,6 @@ def skalpiranje(burza):
     if offerVE < bidVZ - 10:
         burza.kupi('BUY', 'VALE', offerVE, sizeVE)
         burza.pretvori('BUY', 'VALBZ', sizeVE)
-
 
     if len(burza.tradelog) >= 8:
         diff_highVALE = burza.tradelog['VALE'][-1] - burza.tradelog['VALE'][-7]
