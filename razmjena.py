@@ -9,7 +9,8 @@ class Burza:
         if test:
             host_name = "test-exch-partitivnisumari"
         else:
-            return
+            host_name = "production"
+            port = 20000
 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((host_name, port))
