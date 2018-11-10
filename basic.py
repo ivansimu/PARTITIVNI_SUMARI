@@ -49,8 +49,8 @@ def skalpiranje(burza):
 
     narudzbe = []
 
-    sizeVZ = 1
-    sizeVE = 1
+    sizeVZ = 10
+    sizeVE = 10
 
     stanje = {}
 
@@ -75,3 +75,34 @@ def skalpiranje(burza):
         burza.kupi('SELL', 'VALBZ', bidVZ, sizeVE)
 
     return narudzbe
+
+# def skalpiranjeXLF(burza):
+#
+#     narudzbe = []
+#
+#     sizeVZ = 10
+#     sizeVE = 10
+#
+#     stanje = {}
+#
+#     while 'VALBZ' not in stanje or 'VALE' not in stanje:
+#         stanje = teste.logN(burza, 15)
+#
+#     offerVZ = stanje['VALBZ'][3]
+#     bidVZ = stanje['VALBZ'][0]
+#
+#     offerVE = stanje['VALE'][3]
+#     bidVE = stanje['VALE'][0]
+#
+#     if offerVZ < bidVE - 10:
+#         burza.kupi('BUY', 'VALBZ', offerVZ, sizeVZ)
+#         burza.pretvori('BUY', 'VALE', sizeVZ)
+#         burza.kupi('SELL', 'VALE', bidVE, sizeVZ)
+#
+#
+#     if offerVE < bidVZ - 10:
+#         burza.kupi('BUY', 'VALE', offerVE, sizeVE)
+#         burza.pretvori('BUY', 'VALBZ', sizeVE)
+#         burza.kupi('SELL', 'VALBZ', bidVZ, sizeVE)
+#
+#     return narudzbe
