@@ -40,11 +40,11 @@ class Burza:
             if store_last:
                 self.last_data = data
                 teste.logger(self.log,data)
-                if data['type'] == 'fill':
-                    if data['dir'] == 'BUY':
-                        self.inv[data['symbol']] -= data['size']
-                    else:
-                        self.inv[data['symbol']] += data['size']
+                # if data['type'] == 'fill':
+                #     if data['dir'] == 'BUY':
+                #         self.inv[data['symbol']] -= data['size']
+                #     else:
+                #         self.inv[data['symbol']] += data['size']
 
             return data
 
@@ -57,11 +57,14 @@ class Burza:
         trade = {'type': 'add', 'order_id': self.order_id, 'symbol': symbol,
                  'dir': buysell, 'price': price, 'size': size}
         self.order_id += 1
-        print(trade)
+        #print(trade)
         if buysell == "SELL" and teste.shouldISell(self.inv,symbol):
             self.zapisi(trade)
-        elif buysell == BUY:
+            self.inv[symbol] -= size
+        elif buysell == "BUY":
             self.zapisi(trade)
+            self.inv[symbol] += size
+        print(self.inv)
 
 
     def trade_batch(self, trades):
