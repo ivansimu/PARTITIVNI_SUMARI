@@ -12,5 +12,11 @@ def run(burza):
         for price, size in offeri:
             if price < 1000:
                 narudzbe.append(('BUY', 'BOND', price, size))
-
+    print(narudzbe)
     return narudzbe
+
+def run2(burza):
+    while True:
+        data = burza.citaj()
+        run(burza)
+        print(data)
