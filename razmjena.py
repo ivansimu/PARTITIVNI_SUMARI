@@ -37,8 +37,6 @@ class Burza:
         json.dump(data, self.stream)
         self.stream.write("\n")
 
-
-
     def kupi(self, buysell, symbol, price, size):
         trade = {'type': 'add', 'order_id': self.order_id, 'symbol': symbol,
                  'dir': buysell, 'price': price, 'size': size}
