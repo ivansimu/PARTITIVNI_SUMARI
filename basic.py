@@ -53,8 +53,6 @@ def skalpiranje(burza):
     sizeVE = 10
 
     stanje = {}
-    trigger_high = 10
-    trigger_low = 0
 
 
     while 'VALBZ' not in stanje or 'VALE' not in stanje:
@@ -68,16 +66,16 @@ def skalpiranje(burza):
 
 
 
-        if offerVZ < bidVE - 10:
-            burza.kupi('BUY', 'VALBZ', offerVZ, sizeVZ = 10)
-            burza.pretvori('BUY', 'VALE', sizeVZ)
+    if offerVZ < bidVE - 10:
+        burza.kupi('BUY', 'VALBZ', offerVZ, sizeVZ = 10)
+        burza.pretvori('BUY', 'VALE', sizeVZ)
 
-        if offerVE < bidVZ - 10:
-            burza.kupi('BUY', 'VALE', offerVE, sizeVE=10)
-            burza.pretvori('BUY', 'VALBZ', sizeVE)
+    if offerVE < bidVZ - 10:
+        burza.kupi('BUY', 'VALE', offerVE, sizeVE=10)
+        burza.pretvori('BUY', 'VALBZ', sizeVE)
 
 
-    if duljinaliste >= 8:
+    if len(burza.tradelog) >= 8:
         diff_highVALE = burza.tradelog['VALE'][-1] - burza.tradelog['VALE'][-7]
         diff_lowVALE = burza.tradelog['VALE'][-1] - burza.tradelog['VALE'][-2]
 
