@@ -39,7 +39,8 @@ def run3(burza):
                     burza.kupi('BUY', sym, price, size)
 
 def swicc(burza):
+    data = burza.last_data
     if data['type'] == 'book' and data['symbol'] == 'BOND':
         run2(burza)
-    else if data['type'] == 'book' and data['symbol'] != 'GS' or 'MS' or 'WFC' or 'VALBZ':
+    elif data['type'] == 'book': #and data['symbol'] == 'GS' or 'MS' or 'WFC' or 'VALBZ':
         run3(burza)
