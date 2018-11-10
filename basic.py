@@ -25,14 +25,14 @@ def run2(burza):
         swicc(burza)
 
 def run3(burza):
-    dffs = teste.alg(burza.log,3)
+    dffs = teste.alg(burza.log)
     data = burza.last_data
     sym = data['symbol']
     if data['type'] == 'book':
         if (sym,0) in dffs:
             bidovi = data['buy']
             for price, size in bidovi:
-                if dffs[(sym,0)] < 0 and teste.shouldISell(burza.inv, sym):
+                if dffs[(sym,0)] < 0:
                     burza.kupi('SELL', sym, price, size)
             offeri = data['sell']
             for price, size in offeri:
@@ -44,8 +44,7 @@ def swicc(burza):
     if data['type'] == 'book' and data['symbol'] == 'BOND':
         run2(burza)
     elif data['type'] == 'book': #and data['symbol'] == 'GS' or 'MS' or 'WFC' or 'VALBZ':
-        return
-        #run3(burza)
+        run3(burza)
 
 
 # def skalpiranje(burza):
