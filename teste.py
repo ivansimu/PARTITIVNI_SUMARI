@@ -51,7 +51,7 @@ def logN(burza,n):
 listadionica = ["GS","MS", "WFC", "VALBZ","BOND","VALE","XLF"]
 
 # mx = broj
-def alg(d,mx=11):
+def alg(d,mx=5):
     res = {}
     diffs = []
     #print(d)
