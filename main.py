@@ -2,8 +2,6 @@ import argparse
 from razmjena import Burza
 import basic
 
-if __name__ == 'main':
-    prod()
 
 def prod():
     r = Burza(False)
