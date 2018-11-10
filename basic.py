@@ -13,7 +13,7 @@ def run(burza):
             if price < 1000:
                 narudzbe.append(('BUY', 'BOND', price, size))
     print(narudzbe)
-    map(narudzbe,lambda z,x,c,v: burza.kupi(z,x,c,v))
+    map(lambda z,x,c,v: burza.kupi(z,x,c,v),narudzbe)
     return narudzbe
 
 def run2(burza):
