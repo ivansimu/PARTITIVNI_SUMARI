@@ -19,9 +19,8 @@ def run(burza):
 
 def run2(burza):
     while True:
-        data = burza.citaj()
-        run(burza)
-        print(data)
+        burza.citaj()
+        swicc(burza)
 
 def run3(burza):
     dffs = teste.alg(burza.log)

@@ -7,7 +7,9 @@ tim = "PARTITIVNISUMARI"
 
 class Burza:
     def __init__(self, test):
-        log = {}
+        self.log = {}
+        for i in listadionica:
+            self.log[i] = []
         if test:
             host_name = "test-exch-partitivnisumari"
             port = 25001

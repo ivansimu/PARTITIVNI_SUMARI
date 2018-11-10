@@ -1,5 +1,7 @@
 def logger(d,ord):
-    d[ord['symbol']].extend(ord['price'])
+    print(d,ord)
+    if ord['type'] == 'book':
+        d[ord['symbol']].append(ord['price'])
 
 def alg(d,mx=11):
     res = {}
