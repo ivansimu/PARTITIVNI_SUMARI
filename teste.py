@@ -29,7 +29,6 @@ def logN(burza,n):
         if ord['type'] == 'book':
             buy = ord['buy']
             sell = ord['sell']
-            # print(buy)
             tb = 0
             cb = 0
             for p,n in buy:
@@ -43,15 +42,13 @@ def logN(burza,n):
 
             if tb != 0 and ts != 0:
                 d[ord['symbol']] = (max(map(lambda x: x[0],buy)),min(map(lambda x: x[0],buy)),
-                                    max(map(lambda x: x[0],sell)),min(map(lambda x: x[0],sell)),cb//tb,cs//ts)
-                # cb//tb - prosjecna cijena kupnje, cs//ts - prosjecna cijena prodaje
+                                    max(map(lambda x: x[0],sell)),min(map(lambda x: x[0],sell)),cb//tb,cs//ts) # cb//tb - prosjecna cijena kupnje, cs//ts - prosjecna cijena prodaje
     return d
 
 
 listadionica = ["GS","MS", "WFC", "VALBZ","BOND","VALE","XLF"]
 
-# mx = broj
-def alg(d,mx=5):
+def alg(d,mx=11):
     res = {}
     diffs = []
     #print(d)
@@ -69,6 +66,21 @@ def alg(d,mx=5):
             if len(diffs) > 0:
                 res[(sym,j)] = sum(diffs)//len(diffs)
             diffs.clear()
+    return res
+
+def algIvan(d,mx=11):
+    res = {}
+    diffs = []
+    #print(d)
+    for sym in listadionica:
+        prices = d[sym]
+        j: int
+        for j in [0,1]:
+            prices = list(reversed(prices[len(prices)- mx:])) #uzmi zadnjih mx *(mx-1) i okreni listu
+            diffs.append(prices[0][j] - prices[1][j])
+            diffs.append(prices[0][j] - prices[mx-1][j])
+            res[(sym,j)] = diffs
+            diffs = []
     return res
 
 # def shouldIBuy(inv, symbol):
