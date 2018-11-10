@@ -42,12 +42,18 @@ def alg(d,mx=11):
             diffs.clear()
     return res
 
-def shouldIBuy(inv, symbol):
-    if symbol in ['GS', 'MS', 'WFC', 'XLF'] and inv[symbol] >= 0 and inv[symbol] <= 100:
-        return True
-    elif symbol in ['VALBZ', 'VALE'] and inv[symbol] >= 0 and inv[symbol] <= 10:
-        return True
-    elif symbol == 'BOND':
+# def shouldIBuy(inv, symbol):
+#     if symbol in ['GS', 'MS', 'WFC', 'XLF'] and inv[symbol] >= 0 and inv[symbol] <= 100:
+#         return True
+#     elif symbol in ['VALBZ', 'VALE'] and inv[symbol] >= 0 and inv[symbol] <= 10:
+#         return True
+#     elif symbol == 'BOND':
+#         return True
+#     else:
+#         return False
+
+def shouldISell(inv, symbol):
+    if symbol in ['GS', 'MS', 'WFC', 'XLF', 'VALBZ', 'VALE'] and inv[symbol] >= 0:
         return True
     else:
         return False
