@@ -67,20 +67,31 @@ def skalpiranje(burza):
     bidVE = stanje['VALE'][0]
 
 
-    if offerVZ < bidVE - 10:
-        burza.kupi('BUY', 'VALBZ', offerVZ, sizeVZ = 10)
-        burza.pretvori('BUY', 'VALE', sizeVZ)
 
-    if log[-1] - log [0] > trigger
-        burza.kupi('SELL', 'VALE', bidVE, sizeVZ = 10)
+        if offerVZ < bidVE - 10:
+            burza.kupi('BUY', 'VALBZ', offerVZ, sizeVZ = 10)
+            burza.pretvori('BUY', 'VALE', sizeVZ)
+
+        if offerVE < bidVZ - 10:
+            burza.kupi('BUY', 'VALE', offerVE, sizeVE=10)
+            burza.pretvori('BUY', 'VALBZ', sizeVE)
 
 
-    if offerVE < bidVZ - 10:
-        burza.kupi('BUY', 'VALE', offerVE, sizeVE = 10)
-        burza.pretvori('BUY', 'VALBZ', sizeVE)
+    if duljinaliste >= 8:
+        diff_highVALE = burza.tradelog['VALE'][-1] - burza.tradelog['VALE'][-7]
+        diff_lowVALE = burza.tradelog['VALE'][-1] - burza.tradelog['VALE'][-2]
 
-    if log[-1] - log[-2] < trigger_low  and log [-1] - log[0] > trigger_high
-        burza.kupi('SELL', 'VALBZ', bidVZ, sizeVE = 10)
+        diff_highVALBZ = burza.tradelog['VALBZ'][-1] - burza.tradelog['VALBZ'][-7]
+        diff_lowVALBZ = burza.tradelog['VALBZ'][-1] - burza.tradelog['VALBZ'][-2]
+
+        trigger_high = 3
+        trigger_low = 1
+
+            if (diff_highVALE > trigger_high) and (diff_lowVALE < trigger_low):
+                burza.kupi('SELL', 'VALE', bidVE, sizeVE = 10)
+
+            if (diff_highVALBZ > trigger_high) and (diff_lowVALBZ < trigger_low):
+                burza.kupi('SELL', 'VALBZ', bidVZ, sizeVZ = 10)
 
     return narudzbe
 
