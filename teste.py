@@ -17,12 +17,17 @@ def logger(d,ord):
         for p,n in sell:
             cs += p * n
             ts += n
-        d[ord['symbol']].append((cb//tb,cs//ts))
+        if tb != 0 and ts != 0:
+            d[ord['symbol']].append((cb//tb,cs//ts))
+
+listadionica = ["GS","MS", "WFC", "VALBZ","BOND","VALE","XLF"]
 
 def alg(d,mx=11):
     res = {}
     diffs = []
-    for sym,prices in d:
+    print(d)
+    for sym in listadionica:
+        prices = d[sym]
         j: int
         for j in [0,1]:
             prices = list(reversed(prices))
@@ -32,7 +37,8 @@ def alg(d,mx=11):
                 diffs.append((prices[i+n][j] - prices[i][j])//2)
                 i += n
                 n += 1
-            res[(sym,j)] = sum(diffs)//len(diffs)
+            if len(diffs) > 0:
+                res[(sym,j)] = sum(diffs)//len(diffs)
             diffs.clear()
     return res
 

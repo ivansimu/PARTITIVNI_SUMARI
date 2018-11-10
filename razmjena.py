@@ -8,8 +8,11 @@ listadionica = ["GS","MS", "WFC", "VALBZ","BOND","VALE","XLF"]
 class Burza:
     def __init__(self, test):
         self.log = {}
+        self.inv = {}
         for i in listadionica:
             self.log[i] = []
+            self.inv[i] = 0
+        self.pendorders = {}
         if test:
             host_name = "test-exch-partitivnisumari"
             port = 25001
@@ -37,6 +40,12 @@ class Burza:
             if store_last:
                 self.last_data = data
                 teste.logger(self.log,data)
+                if data['type'] == 'fill':
+                    if data['dir'] == 'BUY':
+                        self.inv[data['symbol']] -= data['size']
+                    elif:
+                        self.inv[data['symbol']] += data['size']
+
             return data
 
 
@@ -49,7 +58,8 @@ class Burza:
                  'dir': buysell, 'price': price, 'size': size}
         self.order_id += 1
         print(trade)
-        self.zapisi(trade)
+        if shouldIBuy(self.inv):
+            self.zapisi(trade)
 
     def trade_batch(self, trades):
         # TODO provjeri konflikte
