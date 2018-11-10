@@ -11,13 +11,15 @@ class Burza:
     def __init__(self, test):
         self.log = {} # symbol -> (prosjecna kupujuca cijena,prosjecna prodajna cijena)
         self.inv = {} # symbol -> broj dionica u invetoriju
+        self.tradelog = {}
         for i in listadionica:
             self.log[i] = []
+            self.tradelog[i] = []
             self.inv[i] = 0
         self.pendorders = {}
         if test:
             host_name = "test-exch-partitivnisumari"
-            port = 25001
+            port = 25000
         else:
             host_name = "production"
             port = 25000
@@ -47,6 +49,8 @@ class Burza:
                         self.inv[data['symbol']] -= data['size']
                     else:
                         self.inv[data['symbol']] += data['size']
+                elif data['type'] == 'trade':
+                    self.tradelog[data['symbol']].append(data['price'])
 
             return data
 

@@ -68,6 +68,21 @@ def alg(d,mx=11):
             diffs.clear()
     return res
 
+def algIvan(d,mx=11):
+    res = {}
+    diffs = []
+    #print(d)
+    for sym in listadionica:
+        prices = d[sym]
+        j: int
+        for j in [0,1]:
+            prices = list(reversed(prices[len(prices)- mx:])) #uzmi zadnjih mx *(mx-1) i okreni listu
+            diffs.append(prices[0][j] - prices[1][j])
+            diffs.append(prices[0][j] - prices[mx-1][j])
+            res[(sym,j)] = diffs
+            diffs = []
+    return res
+
 # def shouldIBuy(inv, symbol):
 #     if symbol in ['GS', 'MS', 'WFC', 'XLF'] and inv[symbol] >= 0 and inv[symbol] <= 100:
 #         return True

@@ -47,9 +47,6 @@ def swicc(burza):
 
 
 def skalpiranje(burza):
-
-    narudzbe = []
-
     sizeVZ = 10
     sizeVE = 10
 
@@ -67,15 +64,22 @@ def skalpiranje(burza):
     if offerVZ < bidVE - 10:
         burza.kupi('BUY', 'VALBZ', offerVZ, sizeVZ)
         burza.pretvori('BUY', 'VALE', sizeVZ)
-        burza.kupi('SELL', 'VALE', bidVE, sizeVZ)
-
 
     if offerVE < bidVZ - 10:
         burza.kupi('BUY', 'VALE', offerVE, sizeVE)
         burza.pretvori('BUY', 'VALBZ', sizeVE)
-        burza.kupi('SELL', 'VALBZ', bidVZ, sizeVE)
 
-    return narudzbe
+    if len(burza.tradelog) >= 8:
+        diff_highVALE = burza.tradelog['VALE'][-1] - burza.tradelog['VALE'][-7]
+        diff_lowVALE = burza.tradelog['VALE'][-1] - burza.tradelog['VALE'][-2]
+        diff_highVALBZ = burza.tradelog['VALBZ'][-1] - burza.tradelog['VALBZ'][-7]
+        diff_lowVALBZ = burza.tradelog['VALBZ'][-1] - burza.tradelog['VALBZ'][-2]
+        trigger_high = 3
+        trigger_low = 1
+        if (diff_highVALE > trigger_high) and (diff_lowVALE < trigger_low):
+            burza.kupi('SELL', 'VALE', bidVE, sizeVE)
+        if (diff_highVALBZ > trigger_high) and (diff_lowVALBZ < trigger_low):
+            burza.kupi('SELL', 'VALBZ', bidVZ, sizeVZ)
 
 def skalpiranjeXLF(burza):
 
