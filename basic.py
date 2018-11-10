@@ -41,5 +41,5 @@ def run3(burza):
 def swicc(burza):
     if data['type'] == 'book' and data['symbol'] == 'BOND':
         run2(burza)
-    else if data['type'] == 'book' and data['symbol'] == 'GS' or 'MS' or 'WFC' or 'VALBZ':
+    else if data['type'] == 'book' and data['symbol'] != 'GS' or 'MS' or 'WFC' or 'VALBZ':
         run3(burza)
