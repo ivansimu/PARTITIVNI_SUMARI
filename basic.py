@@ -41,22 +41,22 @@ def swicc(burza):
     data = burza.last_data
     if data['type'] == 'book' and data['symbol'] == 'BOND':
         run2(burza)
-    elif data['type'] == 'book': #and data['symbol'] == 'GS' or 'MS' or 'WFC' or 'VALBZ':
+    elif data['type'] == 'book' and data['symbol'] != 'BOND':
         run3(burza)
 
 
 # def skalpiranje(burza):
 #
-                narudzbe = []
-
-                data = burza.last_data
-                if data['type'] == 'book' and data['symbol'] == 'VALBZ':
-                    bidoviValbz = data['buy']
-                    offeriValbz = data['sell']
-
-                if data['type'] == 'book' and data['symbol'] == 'VALE':
-                    bidoviVale = data['buy']
-                    offeriVale = data['sell']
+                # narudzbe = []
+                #
+                # data = burza.last_data
+                # if data['type'] == 'book' and data['symbol'] == 'VALBZ':
+                #     bidoviValbz = data['buy']
+                #     offeriValbz = data['sell']
+                #
+                # if data['type'] == 'book' and data['symbol'] == 'VALE':
+                #     bidoviVale = data['buy']
+                #     offeriVale = data['sell']
 #
 #     for bidVZ, sizeVZ in bidoviValbz:
 #         for offerVE, sizeVE in offeriVale:
